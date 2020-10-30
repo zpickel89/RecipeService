@@ -1,15 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using RecipeService.DataAccess.Repositories;
+using RecipeService.Logic;
 
 namespace RecipeService
 {
@@ -25,8 +21,10 @@ namespace RecipeService
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			SetupDependencies(services);
 			services.AddControllers();
 			services.AddSwaggerGen();
+			
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,9 +51,16 @@ namespace RecipeService
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();
-			});
+			});			
+		}
 
-			
+		private void SetupDependencies(IServiceCollection services)
+		{
+			// Logic
+			services.AddScoped<IRecipeLogic, RecipeLogic>();
+
+			// Repositories
+			services.AddScoped<IRecipeRepository, RecipeRepository>();
 		}
 	}
 }
