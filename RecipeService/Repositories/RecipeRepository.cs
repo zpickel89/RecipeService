@@ -1,5 +1,4 @@
 ﻿using RecipeService.DataModels;
-using System;
 using System.Collections.Generic;
 
 namespace RecipeService.DataAccess.Repositories
@@ -17,22 +16,22 @@ namespace RecipeService.DataAccess.Repositories
 	{
 		public int CreateRecipe(Recipe newRecipe)
 		{
-			throw new NotImplementedException();
+			return 1;
 		}
 
 		public Recipe GetRecipeById(int recipeId)
 		{
-			throw new NotImplementedException();
+			return new Recipe();
 		}
 
 		public IEnumerable<Recipe> GetRecipies()
 		{
-			throw new NotImplementedException();
+			return new List<Recipe>();
 		}
 
 		public bool UpdateRecipe(Recipe updatedRecipe)
 		{
-			throw new NotImplementedException();
+			return true;
 		}
 	}
 }

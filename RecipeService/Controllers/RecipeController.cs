@@ -22,12 +22,14 @@ namespace RecipeService.Controllers
 		}
 
 		[HttpGet]
+		[ProducesResponseType(typeof(RecipeModel), 200)]
 		public IActionResult Get(int recipeId)
 		{
 			return Ok(_recipeLogic.GetRecipeById(recipeId));
 		}
 
 		[HttpPost]
+		[ProducesResponseType(typeof(int), 200)]
 		public IActionResult Post(RecipeModel newRecipe)
 		{
 			return Ok(_recipeLogic.CreateRecipe(newRecipe));
