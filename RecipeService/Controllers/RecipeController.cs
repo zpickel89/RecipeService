@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using RecipeService.DataAccess.Repositories;
+﻿using Microsoft.AspNetCore.Mvc;
 using RecipeService.Logic;
 using RecipeService.ViewModels;
 
@@ -21,6 +15,11 @@ namespace RecipeService.Controllers
 			_recipeLogic = recipeLogic;
 		}
 
+		/// <summary>
+		/// Returns a single recipe with the specified Id
+		/// </summary>
+		/// <param name="recipeId">The id of the recipe to return</param>
+		/// <returns></returns>
 		[HttpGet]
 		[ProducesResponseType(typeof(RecipeModel), 200)]
 		public IActionResult Get(int recipeId)
@@ -28,6 +27,11 @@ namespace RecipeService.Controllers
 			return Ok(_recipeLogic.GetRecipeById(recipeId));
 		}
 
+		/// <summary>
+		/// Creates a new recipe and returns the Id
+		/// </summary>
+		/// <param name="newRecipe">The new recipe</param>
+		/// <returns>The id of the new recipe</returns>
 		[HttpPost]
 		[ProducesResponseType(typeof(int), 200)]
 		public IActionResult Post(RecipeModel newRecipe)

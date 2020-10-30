@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RecipeService.DataAccess.Repositories;
 using RecipeService.Logic;
+using System.IO;
 
 namespace RecipeService
 {
@@ -23,7 +24,11 @@ namespace RecipeService
 		{
 			SetupDependencies(services);
 			services.AddControllers();
-			services.AddSwaggerGen();
+			services.AddSwaggerGen(config => 
+			{
+				var filePath = Path.Combine(System.AppContext.BaseDirectory, "RecipeService.xml");
+				config.IncludeXmlComments(filePath);
+			});
 			
 		}
 
