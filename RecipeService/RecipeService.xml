@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RecipeService</name>
+    </assembly>
+    <members>
+        <member name="M:RecipeService.Controllers.RecipeController.Get(System.Int32)">
+            <summary>
+            Returns a single recipe with the specified Id
+            </summary>
+            <param name="recipeId">The id of the recipe to return</param>
+            <returns></returns>
+        </member>
+        <member name="M:RecipeService.Controllers.RecipeController.Post(RecipeService.ViewModels.RecipeModel)">
+            <summary>
+            Creates a new recipe and returns the Id
+            </summary>
+            <param name="newRecipe">The new recipe</param>
+            <returns>The id of the new recipe</returns>
+        </member>
+        <member name="T:RecipeService.DataModels.CookingInstruction">
+            <summary>
+            Maps to CookingInstruction
+            </summary>
+        </member>
+        <member name="T:RecipeService.DataModels.Ingredient">
+            <summary>
+            Maps to lookup.Ingredient
+            </summary>
+        </member>
+        <member name="T:RecipeService.DataModels.Recipe">
+            <summary>
+            Maps to dbo.Recipe
+            </summary>
+        </member>
+    </members>
+</doc>

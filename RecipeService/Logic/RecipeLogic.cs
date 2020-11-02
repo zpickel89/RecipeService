@@ -1,5 +1,7 @@
-﻿using RecipeService.DataAccess.Repositories;
+﻿using Microsoft.Extensions.Logging;
+using RecipeService.DataAccess.Repositories;
 using RecipeService.ViewModels;
+using System;
 
 namespace RecipeService.Logic
 {
@@ -12,9 +14,12 @@ namespace RecipeService.Logic
 	public class RecipeLogic : IRecipeLogic
 	{
 		private readonly IRecipeRepository _recipeRepository;
-		public RecipeLogic(IRecipeRepository recipeRepository)
+		private readonly ILogger<RecipeLogic> _logger;
+
+		public RecipeLogic(IRecipeRepository recipeRepository, ILogger<RecipeLogic> logger)
 		{
 			_recipeRepository = recipeRepository;
+			_logger = logger;
 		}
 
 		public int CreateRecipe(RecipeModel newRecipe)
